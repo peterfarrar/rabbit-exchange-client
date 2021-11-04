@@ -1,0 +1,7 @@
+config/local.sh
+node_modules
+*.tmp
+*.bak
+*~
+*.swp
+*.swo
