@@ -18,7 +18,7 @@ In it's current state, the values in there are probably all you need, though you
 ### Commands
 The `package.json` file contains three commands right now.  One to publish a message to a queue from the command line.  Two to listen on sample topics.  There's some crossover for the listeners where they should both receive the message on certain topics, and then there are exclusive topics.  These files are samples.  Play with them as you like!
 ```
-npm run emit_log
+npm run emit_log <topic> <message>
 npm run log_listener
 npm run error_listener
 ```
