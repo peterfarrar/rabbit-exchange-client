@@ -1,6 +1,6 @@
 const amqp = require('amqplib')
 
-class RabbitDirectExchangeClient {
+class RabbitExchangeClient {
   queue = ''
   connection = null
   channel = null
@@ -66,8 +66,7 @@ class RabbitDirectExchangeClient {
   }
 }
 
-// class RabbitDirectExchangeClient extends RabbitClient {
-class RabbitDirectExchangePublishClient extends RabbitDirectExchangeClient {
+class RabbitExchangePublishClient extends RabbitExchangeClient {
   constructor (parameters) {
     super(parameters)
   }
@@ -78,7 +77,7 @@ class RabbitDirectExchangePublishClient extends RabbitDirectExchangeClient {
     }
 
     this.channel.publish(this.exchange, topic, Buffer.from(payload));    
-    console.log(" [x] Sent %s: '%s'", topic, payload);
+    // console.log(" [x] Sent %s: '%s'", topic, payload);
   }
   
   closeConnection = async () => {
@@ -89,7 +88,7 @@ class RabbitDirectExchangePublishClient extends RabbitDirectExchangeClient {
   }
 }
 
-class RabbitDirectExchangeSubscribeClient extends RabbitDirectExchangeClient {
+class RabbitExchangeSubscribeClient extends RabbitExchangeClient {
   constructor (parameters) {
     super(parameters)
   }
@@ -114,6 +113,6 @@ class RabbitDirectExchangeSubscribeClient extends RabbitDirectExchangeClient {
 }
 
 module.exports = {
-  RabbitDirectExchangePublishClient,
-  RabbitDirectExchangeSubscribeClient
+  RabbitExchangePublishClient,
+  RabbitExchangeSubscribeClient
 }

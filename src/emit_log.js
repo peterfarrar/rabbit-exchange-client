@@ -1,9 +1,9 @@
-const { RabbitDirectExchangePublishClient } = require('./clients/rabbit-client')
+const { RabbitExchangePublishClient } = require('./clients/rabbit-exchange-client')
 const options = require('../options')
 
 const doTheThing = async () => {
   const message = process.argv.slice(2).join(' ') || 'info Hello world!'
-  const publisher = new RabbitDirectExchangePublishClient(options)
+  const publisher = new RabbitExchangePublishClient(options)
   const data = message.split(' ')
   const topic = data[0]
   payload = data.splice(1).join(' ')
